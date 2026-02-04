@@ -1,0 +1,165 @@
+<div class="min-h-screen bg-[#fffafa] relative overflow-x-hidden font-sans">
+  <div
+    class="fixed inset-0 pointer-events-none opacity-[0.04] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-50"
+  ></div>
+
+  <section
+    class="flex flex-col items-center justify-center pt-12 pb-6 px-6 relative z-10 text-center"
+  >
+    <div class="animate-fade-in space-y-2">
+      <h1 class="text-3xl md:text-7xl font-serif text-rose-600 drop-shadow-sm">
+        Hello, There is a message
+      </h1>
+      <p class="text-rose-500 font-medium text-sm md:text-base mb-2">
+        ဟယ်လို... ဒီမှာ မက်ဆေ့ခ်ျတစ်ခု ရှိတယ်နော်
+      </p>
+      <p
+        class="text-rose-400 italic text-lg font-light tracking-[0.2em] uppercase text-[10px]"
+      >
+        Press the heart to reveal my message
+      </p>
+    </div>
+
+    @if (!isUnlocked) {
+      <div
+        class="mt-10 relative group cursor-pointer transition-all duration-500 hover:scale-110"
+        (click)="revealMessage()"
+      >
+        <div
+          class="w-64 h-40 bg-rose-500 rounded-2xl shadow-2xl flex flex-col items-center justify-center relative overflow-hidden border-4 border-white/30"
+        >
+          <i class="pi pi-heart-fill text-white text-6xl animate-beat mb-2"></i>
+          <span
+            class="text-white font-bold tracking-tighter text-sm uppercase text-center"
+          >
+            Tap to Unlock <br />
+            <span class="text-[10px] font-normal">ဖွင့်ကြည့်ရန် နှိပ်ပါ</span>
+          </span>
+        </div>
+        <div
+          class="absolute inset-0 bg-rose-400 rounded-2xl blur-xl opacity-20 animate-ping"
+        ></div>
+      </div>
+    }
+  </section>
+
+  @if (isUnlocked) {
+    <section class="py-10 px-6 max-w-2xl mx-auto text-center animate-fade-in">
+      <div
+        class="bg-white/60 backdrop-blur-md p-10 rounded-[2.5rem] border border-rose-100 shadow-xl relative overflow-hidden"
+      >
+        <div
+          class="absolute -top-10 -right-10 w-32 h-32 bg-rose-100 rounded-full blur-3xl"
+        ></div>
+        <i class="pi pi-envelope text-rose-300 text-3xl mb-4"></i>
+
+        <h2 class="text-3xl font-serif text-rose-800 mb-2 tracking-tight">
+          To My One & Only
+        </h2>
+        <p class="text-rose-400 text-sm mb-6 font-medium">
+          ငါ့ရဲ့ တစ်ဦးတည်းသော ချစ်သူသို့
+        </p>
+
+        <div class="space-y-4">
+          <p class="text-xl text-slate-600 leading-relaxed italic font-light">
+            "Happy Valentine's Day my girl. In a world full of temporary things,
+            you are a feeling I want to keep forever."
+          </p>
+          <p class="text-base text-rose-700 leading-relaxed font-normal">
+            "ချစ်ရတဲ့ မိန်းကလေးရေ... ဗလင်တိုင်းဒေးမှာ ပျော်ရွှင်ပါစေ။ ခဏတာပဲ
+            တည်မြဲတဲ့ အရာတွေကြားထဲမှာ မင်းကတော့ ငါ့အတွက် ထာဝရ
+            သိမ်းဆည်းထားချင်တဲ့ ခံစားချက်လေးပါ"
+          </p>
+          <p class="text-slate-500 text-sm italic">
+            Thank you for being the highlight of my every day. <br />
+            ငါ့ရဲ့ နေ့ရက်တိုင်းကို တောက်ပစေတဲ့အတွက် ကျေးဇူးတင်ပါတယ်။
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="py-10 px-6 max-w-6xl mx-auto animate-fade-in">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        @for (item of displayImages; track $index) {
+          <div class="polaroid-card group">
+            <div
+              class="bg-white p-3 shadow-2xl transition-all duration-500 group-hover:-rotate-2"
+            >
+              <img
+                [src]="item.url"
+                class="w-full h-72 object-cover rounded-sm"
+              />
+              <div
+                class="pt-5 pb-2 text-center font-serif text-rose-700 italic text-xl"
+              >
+                {{ item.caption }}
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section
+      class="py-20 flex flex-col items-center justify-center text-center p-6 min-h-[60vh]"
+    >
+      @if (!isAccepted) {
+        <h2
+          class="text-5xl md:text-6xl font-serif text-rose-600 mb-4 animate-pulse"
+        >
+          Will you be my <br />
+          Valentine?
+        </h2>
+        <p class="text-rose-400 mb-12 text-lg">
+          ငါ့ရဲ့ ဗလင်တိုင်း ဖြစ်ပေးမလား?
+        </p>
+
+        <div
+          class="flex gap-6 items-center justify-center flex-wrap min-h-[120px]"
+        >
+          <p-button
+            label="Yes, I'd Love To! (လက်ခံတယ်)"
+            severity="danger"
+            styleClass="p-button-rounded p-button-lg px-12 py-5 text-xl shadow-2xl hover:scale-110"
+            (click)="confirmYes()"
+          >
+          </p-button>
+
+          <button
+            (mouseover)="moveNo()"
+            [ngStyle]="noBtnStyle"
+            class="px-10 py-4 bg-slate-100 text-slate-400 rounded-full font-bold transition-all border border-slate-200 shadow-sm"
+          >
+            No (မရဘူး)
+          </button>
+        </div>
+      } @else {
+        <div class="animate-fade-in max-w-2xl px-4">
+          <i
+            class="pi pi-heart-fill text-rose-600 text-7xl animate-beat mb-6"
+          ></i>
+
+          <h2 class="text-6xl font-serif text-rose-700 mb-2">
+            Happy Valentine's Day!
+          </h2>
+          <p class="text-rose-400 mb-6 font-medium">
+            ပျော်ရွှင်ဖွယ် ချစ်သူများနေ့လေး ဖြစ်ပါစေ
+          </p>
+
+          <div class="space-y-4 py-8 px-6 border-y border-rose-100">
+            <p class="text-2xl text-rose-500 font-serif italic tracking-wide">
+              "I Love You till i die"
+            </p>
+            <p class="text-rose-700 text-xl font-medium">
+              "သေသည်အထိ မင်းတစ်ယောက်တည်းကိုပဲ ချစ်သွားမှာပါ"
+            </p>
+          </div>
+
+          <p class="mt-8 text-rose-300 text-sm uppercase tracking-widest">
+            Together Forever • ၂၀၂၆
+          </p>
+        </div>
+      }
+    </section>
+  }
+</div>
