@@ -1,0 +1,148 @@
+<div class="min-h-screen bg-[#fafafa] flex flex-col lg:flex-row">
+  <section class="lg:w-1/2 h-64 lg:h-auto relative overflow-hidden">
+    <img
+      src="https://t4.ftcdn.net/jpg/03/18/32/31/360_F_318323109_XZSZP8HBXUOXSKTVQevrmdjALJruuiAI.jpg"
+      class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+      alt="Couture Studio Details"
+    />
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="absolute bottom-12 left-12 text-white reveal-contact">
+      <h2 class="text-4xl font-serif italic mb-2 text-white">The Atelier</h2>
+      <p class="text-[10px] uppercase tracking-[0.4em] opacity-80 text-white">
+        By Appointment Only
+      </p>
+    </div>
+  </section>
+
+  <section
+    class="lg:w-1/2 flex items-center justify-center p-8 md:p-20 lg:p-32"
+  >
+    <div class="w-full max-w-md reveal-contact">
+      <div *ngIf="!submitted">
+        <div class="mb-12">
+          <h3 class="text-pink-500 text-[10px] uppercase tracking-[0.5em] mb-4">
+            Get in Touch
+          </h3>
+          <h1 class="text-4xl font-serif text-neutral-900">
+            Bespoke <span class="italic text-neutral-400">Inquiry</span>
+          </h1>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-8">
+          <div class="flex flex-col gap-2">
+            <label
+              class="text-[9px] uppercase tracking-[0.3em] text-neutral-400"
+              >Full Identity</label
+            >
+            <input
+              pInputText
+              name="name"
+              [(ngModel)]="formData.name"
+              required
+              placeholder="Sophie Beaumont"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex flex-col gap-2">
+              <label
+                class="text-[9px] uppercase tracking-[0.3em] text-neutral-400"
+                >Email Address</label
+              >
+              <input
+                pInputText
+                name="email"
+                type="email"
+                [(ngModel)]="formData.email"
+                required
+                placeholder="sophie@example.com"
+              />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label
+                class="text-[9px] uppercase tracking-[0.3em] text-neutral-400"
+                >Reason</label
+              >
+              <p-dropdown
+                [options]="['Bridal', 'Evening Wear', 'Press']"
+                name="reason"
+                [(ngModel)]="formData.reason"
+                placeholder="Select Service"
+                styleClass="w-full"
+              >
+              </p-dropdown>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label
+              class="text-[9px] uppercase tracking-[0.3em] text-neutral-400"
+              >Your Vision</label
+            >
+            <textarea
+              pInputTextarea
+              name="message"
+              [(ngModel)]="formData.message"
+              [autoResize]="true"
+              rows="4"
+              placeholder="How can we help you create your story?"
+            >
+            </textarea>
+          </div>
+
+          <div class="pt-4">
+            <p-button
+              type="submit"
+              [label]="loading ? 'Sending...' : 'Send Message'"
+              [loading]="loading"
+              [disabled]="!contactForm.valid"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+            >
+            </p-button>
+          </div>
+        </form>
+      </div>
+
+      <div *ngIf="submitted" class="text-center py-20 animation-fade-in">
+        <i class="pi pi-check-circle text-pink-500 text-5xl mb-6"></i>
+        <h2 class="text-3xl font-serif italic text-neutral-800">Thank You</h2>
+        <p class="text-neutral-500 font-light mt-4">
+          We have received your vision. Diana will contact you shortly.
+        </p>
+        <button
+          pButton
+          label="Back to Form"
+          (click)="submitted = false"
+          class="p-button-text mt-8 text-pink-500"
+        ></button>
+      </div>
+
+      <div class="mt-20 pt-8 border-t border-neutral-100 flex gap-12">
+        <div>
+          <h4
+            class="text-[9px] uppercase tracking-[0.3em] text-neutral-900 mb-2"
+          >
+            Location
+          </h4>
+          <p class="text-[11px] text-neutral-500 font-light">
+            Downtown, Yangon
+          </p>
+        </div>
+        <div>
+          <h4
+            class="text-[9px] uppercase tracking-[0.3em] text-neutral-900 mb-2"
+          >
+            Social
+          </h4>
+          <p
+            class="text-[11px] text-neutral-500 font-light underline decoration-pink-200 cursor-pointer italic"
+          >
+            &#64;DianaAtelier
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

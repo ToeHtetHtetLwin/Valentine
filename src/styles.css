@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Explicitly import the PrimeUI plugin for Tailwind 4 */
+@plugin "tailwindcss-primeui";
+
+/* Standard PrimeIcons */
+@import "primeicons/primeicons.css";
