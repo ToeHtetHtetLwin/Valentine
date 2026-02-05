@@ -1,0 +1,126 @@
+<div
+  *ngIf="!started"
+  class="fixed inset-0 z-[100] bg-pink-100 flex flex-col items-center justify-center p-6 text-center"
+>
+  <div class="mb-6 animate-pulse">
+    <i class="pi pi-heart-fill text-pink-600 text-7xl drop-shadow-lg"></i>
+  </div>
+  <button
+    (click)="startExperience()"
+    class="group px-10 py-4 bg-white border-2 border-pink-400 rounded-full shadow-2xl hover:bg-pink-50 transition-all duration-500 active:scale-95"
+  >
+    <span
+      class="font-serif italic text-pink-600 font-bold group-hover:text-pink-700 tracking-wider"
+      >"I found a love for me..."</span
+    >
+  </button>
+</div>
+
+<div
+  class="min-h-screen bg-gradient-to-b from-pink-50 via-pink-100 to-pink-200 text-slate-800 font-light overflow-x-hidden selection:bg-pink-300"
+>
+  <div class="heart-bg">
+    <div class="heart" style="left: 10%; animation-delay: 0s"></div>
+    <div class="heart" style="left: 25%; animation-delay: 2s"></div>
+    <div class="heart" style="left: 45%; animation-delay: 4s"></div>
+    <div class="heart" style="left: 65%; animation-delay: 1s"></div>
+    <div class="heart" style="left: 85%; animation-delay: 3s"></div>
+  </div>
+
+  <button
+    (click)="toggleMusic()"
+    class="fixed top-6 right-6 z-50 w-12 h-12 bg-white/60 backdrop-blur-md rounded-full border-2 border-pink-400 flex items-center justify-center shadow-lg"
+  >
+    <i
+      [class]="isPlaying ? 'pi pi-volume-up' : 'pi pi-volume-off'"
+      class="text-pink-600"
+    ></i>
+  </button>
+
+  <main class="max-w-2xl mx-auto pt-16 pb-20 px-8 relative z-10">
+    <div class="space-y-10 text-center">
+      <header class="space-y-2">
+        <span
+          class="text-pink-600 tracking-[0.3em] text-sm uppercase block font-bold animate-pulse"
+          >To my beautiful Person</span
+        >
+        <h1
+          class="text-5xl md:text-6xl font-serif text-pink-700 leading-tight drop-shadow-sm"
+        >
+          You Are Amazing
+        </h1>
+      </header>
+
+      <article
+        class="space-y-6 text-lg md:text-xl text-gray-700 leading-snug font-serif italic"
+      >
+        <p class="animate-in fade-in slide-in-from-bottom-4 duration-700">
+          "We were just kids when we first met... but even then, I knew there
+          was something special about the way you smiled."
+        </p>
+        <p
+          class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
+        >
+          "I want to hold your hand and dance in the dark, with you between my
+          arms. I want to share my secrets and my future with you."
+        </p>
+        <p
+          class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500"
+        >
+          "Looking at you right now, all I can think is darling, you are
+          everything I've ever searched for. I wanna say I Love You."
+        </p>
+      </article>
+
+      <section class="pt-8">
+        <div
+          *ngIf="!responseSent"
+          class="inline-block w-full max-w-sm bg-white/80 backdrop-blur-xl p-10 rounded-[3rem] shadow-[0_20px_50px_rgba(219,39,119,0.3)] border-2 border-pink-300"
+        >
+          <h2 class="text-2xl font-serif mb-8 text-pink-700 font-bold">
+            Will you be my Girlfriend and my Valentine? ❤️
+          </h2>
+
+          <div class="flex flex-col gap-4">
+            <p-button
+              [label]="isSubmitting ? 'Sending...' : 'Yes, I will!'"
+              (onClick)="onResponse('Yes')"
+              [disabled]="isSubmitting"
+              styleClass="w-full py-5 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 border-none text-white text-xl font-bold shadow-pink-300 hover:scale-[1.05] transition-transform"
+            >
+            </p-button>
+
+            <button
+              (click)="onResponse('No')"
+              [disabled]="isSubmitting"
+              class="text-pink-400 hover:text-pink-600 transition-colors italic text-sm font-medium"
+            >
+              Maybe another time...
+            </button>
+          </div>
+        </div>
+
+        <div
+          *ngIf="responseSent"
+          class="bg-white/90 backdrop-blur-md p-10 rounded-[3rem] border-2 border-pink-400 animate-in zoom-in duration-700 shadow-2xl"
+        >
+          <i
+            class="pi pi-heart-fill text-pink-600 text-6xl mb-4 block animate-bounce"
+          ></i>
+          <h2
+            class="text-3xl font-serif text-pink-700 leading-relaxed italic font-bold"
+          >
+            {{ finalMessage }}
+          </h2>
+          <p class="mt-2 text-pink-400 font-medium">
+            "Darling, just hold my hand..."
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <audio #audioPlayer loop preload="auto">
+    <source src="perfect.mp3" type="audio/mpeg" />
+  </audio>
+</div>
