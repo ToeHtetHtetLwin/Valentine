@@ -1,0 +1,67 @@
+<!-- Google Elegant Fonts -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Cormorant+Garamond&display=swap"
+  rel="stylesheet"
+/>
+
+<div class="story-viewport">
+  <!-- 🌙 Dreamy Bokeh Overlay -->
+  <div class="bokeh-layer"></div>
+
+  <!-- 🍂 Falling Petals -->
+  <div class="petal petal1">🌸</div>
+  <div class="petal petal2">🌸</div>
+  <div class="petal petal3">🌸</div>
+  <div class="petal petal4">🌸</div>
+  <div class="petal petal5">🌸</div>
+
+  <!-- ✨ Sparkles -->
+  <div class="sparkle" style="top: 20%; left: 10%">🌸</div>
+  <div class="sparkle" style="top: 60%; left: 15%; animation-delay: 2s">🌸</div>
+  <div class="sparkle" style="top: 30%; right: 10%; animation-delay: 4s">
+    🌸
+  </div>
+  <div class="sparkle" style="top: 70%; right: 20%; animation-delay: 1s">
+    🌸
+  </div>
+
+  <!-- 📖 Golden Romantic Book Card -->
+  <div class="book-card" (click)="nextPage()">
+    @if (pages[currentIndex()]) {
+      <div class="animate-page">
+        <!-- Image -->
+        <div class="book-img-container">
+          <img [src]="pages[currentIndex()].image" alt="Story Image" />
+        </div>
+
+        <!-- Content -->
+        <div class="book-content">
+          <h2 class="book-title">
+            {{ pages[currentIndex()].title }}
+          </h2>
+
+          <!-- Divider -->
+          <div class="divider">✦ ✧ ✦</div>
+
+          <p class="book-text">
+            {{ pages[currentIndex()].text }}
+          </p>
+
+          <!-- Hint -->
+          <p class="hint">Tap to turn the next page ✨</p>
+        </div>
+      </div>
+    }
+
+    <!-- Page Number -->
+    <div class="page-tag">
+      <p-tag
+        [value]="currentIndex() + 1 + ' / ' + pages.length"
+        severity="info"
+        [style]="{ background: '#d4af37', color: '#fff' }"
+        [rounded]="true"
+      >
+      </p-tag>
+    </div>
+  </div>
+</div>
