@@ -124,3 +124,61 @@
     <source src="perfect.mp3" type="audio/mpeg" />
   </audio>
 </div> -->
+
+<div class="flex flex-col items-center justify-center min-h-screen bg-rose-50 font-sans overflow-hidden relative p-5">
+  
+  <div *ngIf="isOpen" class="absolute inset-0 pointer-events-none">
+    <div class="heart-particle left-[10%] delay-0">❤️</div>
+    <div class="heart-particle left-[30%] delay-1000">💖</div>
+    <div class="heart-particle left-[70%] delay-500">❤️</div>
+    <div class="heart-particle left-[90%] delay-2000">💕</div>
+  </div>
+
+  <h1 class="text-3xl md:text-5xl font-extrabold text-rose-600 mb-8 md:mb-12 drop-shadow-md text-center">
+    Happy Valentine's Day! ❤️
+  </h1>
+
+  <div class="relative cursor-pointer transition-transform duration-500 active:scale-95 z-20" (click)="openEnvelope()">
+    
+    <div class="relative w-64 h-44 md:w-80 md:h-56 bg-rose-400 rounded-b-xl shadow-2xl flex items-center justify-center z-20">
+      <p *ngIf="!isOpen" class="text-white text-base md:text-lg font-semibold animate-bounce tracking-widest">
+        OPEN ME
+      </p>
+    </div>
+
+    <div [ngClass]="{ 'flap-open': isOpen }" 
+         class="absolute top-0 left-0 w-64 h-32 md:w-80 md:h-40 bg-rose-500 origin-bottom transition-transform duration-700 z-30 shadow-inner"
+         style="clip-path: polygon(0 0, 100% 0, 50% 100%)">
+    </div>
+
+    <div *ngIf="isOpen" 
+         class="absolute -top-32 -left-4 md:-top-40 md:-left-16 flex justify-center items-center gap-2 md:gap-6 animate-pop-up z-10 w-[280px] md:w-[500px]">
+      
+      <div class="image-card rotate-[-10deg] w-20 md:w-40">
+        <p-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxtP6FZUJAgd4LI4BuSjKMHePvlAsSe9xspkK4tsF8EE0XknH2IoXT3CyJAG9_Kkf_RScZ42fKHnzcwPd__ODrZ9k6iRn2LlLC7OutSYtY_Q&s" 
+                 [imageStyle]="{'width': '100%', 'border-radius': '8px', 'border': '4px solid white', 'box-shadow': '0 10px 15px -3px rgba(0,0,0,0.1)'}"
+                 [preview]="true"></p-image>
+      </div>
+
+      <div class="image-card translate-y-[-15px] scale-110 z-50 w-24 md:w-44">
+        <p-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsho6vyroPOEm1gtapEZTt40G_y3RuU7gecA&s" 
+                 [imageStyle]="{'width': '100%', 'border-radius': '8px', 'border': '4px solid white', 'box-shadow': '0 10px 15px -3px rgba(0,0,0,0.1)'}"
+                 [preview]="true"></p-image>
+      </div>
+
+      <div class="image-card rotate-[10deg] w-20 md:w-40">
+        <p-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxtP6FZUJAgd4LI4BuSjKMHePvlAsSe9xspkK4tsF8EE0XknH2IoXT3CyJAG9_Kkf_RScZ42fKHnzcwPd__ODrZ9k6iRn2LlLC7OutSYtY_Q&s" 
+                 [imageStyle]="{'width': '100%', 'border-radius': '8px', 'border': '4px solid white', 'box-shadow': '0 10px 15px -3px rgba(0,0,0,0.1)'}"
+                 [preview]="true"></p-image>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isOpen" 
+       class="mt-10 md:mt-32 p-6 md:p-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl text-center w-full max-w-[90%] md:max-w-md border-t-4 border-rose-400 animate-fade-in z-30">
+    <p class="text-rose-700 text-lg md:text-xl italic font-medium leading-relaxed">
+      "Every day with you is a gift. <br class="hidden md:block"> Love you to the moon and back!"
+    </p>
+    <div class="text-rose-300 mt-4 text-xl md:text-2xl">💖✨🌹</div>
+  </div>
+</div>

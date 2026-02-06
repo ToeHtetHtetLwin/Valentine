@@ -5,10 +5,11 @@ import { ButtonModule } from 'primeng/button';
 import { TimelineModule } from 'primeng/timeline';
 import { CardModule } from 'primeng/card';
 import confetti from 'canvas-confetti';
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-story',
-  imports: [CommonModule, ButtonModule, TimelineModule, CardModule],
+  imports: [CommonModule, ButtonModule, TimelineModule, CardModule, ImageModule],
   templateUrl: './story.component.html',
   styleUrl: './story.component.css',
 })
@@ -24,6 +25,12 @@ export class StoryComponent {
   private formspreeEndpoint = 'https://formspree.io/f/xeeljapb';
 
   constructor(private http: HttpClient) {}
+
+  isOpen = false;
+
+  openEnvelope() {
+    this.isOpen = !this.isOpen;
+  }
 
   startExperience() {
     this.started = true;
