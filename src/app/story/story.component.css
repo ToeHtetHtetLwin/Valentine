@@ -1,55 +1,29 @@
-.flap-open {
-  transform: translateY(-100%) rotateX(180deg);
-  z-index: 5;
-}
+@reference "tailwindcss";
 
-.animate-pop-up {
-  animation: popUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+.main-container { @apply flex flex-col items-center justify-center bg-rose-50 relative overflow-x-hidden; }
 
-@keyframes popUp {
-  0% { opacity: 0; transform: translateY(50px) scale(0.5); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
+/* Polaroid Effect */
+.polaroid { @apply transition-transform duration-500 hover:rotate-0 hover:scale-110 bg-white shadow-xl; padding-bottom: 15px; }
 
-.heart-particle {
-  position: absolute;
-  bottom: -50px;
-  font-size: 1.5rem; /* Mobile size */
-  animation: floatUp 4s linear infinite;
-  opacity: 0;
+/* Typing Effect */
+.animate-typing { overflow: hidden; white-space: nowrap; border-right: .15em solid #e11d48; margin: 0 auto; animation: typing 3.5s steps(30, end), blink .75s step-end infinite; }
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { from, to { border-color: transparent } 50% { border-color: #e11d48; } }
 
-  @media (min-width: 768px) {
-    font-size: 2.5rem; /* Desktop size */
-  }
-}
+/* Crying Shake */
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px) rotate(-5deg); } 75% { transform: translateX(8px) rotate(5deg); } }
+.animate-shake { animation: shake 0.4s infinite; display: inline-block; }
 
-@keyframes floatUp {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
+/* Envelope */
+@keyframes popUp { 0% { opacity: 0; transform: translateY(120px) scale(0.3); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+.animate-pop-up { animation: popUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.flap-open { transform: translateY(-100%) rotateX(180deg); z-index: 10 !important; }
 
-.image-card {
-  transition: transform 0.3s ease;
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.1));
-  
-  &:hover {
-    transform: scale(1.2) rotate(0deg) !important;
-    z-index: 100;
-  }
-}
+/* Timer */
+.timer-box { @apply bg-white border border-rose-100 rounded-2xl p-2 min-w-[65px] flex flex-col items-center shadow-sm; }
+.timer-box span { @apply text-2xl font-bold text-rose-600; }
+.timer-box p { @apply text-[10px] uppercase text-rose-300 font-bold; }
 
-.animate-fade-in {
-  animation: fadeIn 1.2s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Delay Helpers */
-.delay-0 { animation-delay: 0s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-1000 { animation-delay: 1s; }
-.delay-2000 { animation-delay: 2s; }
+/* Hearts */
+@keyframes floatUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-100vh); opacity: 0; } }
+.heart-particle { @apply absolute bottom-[-50px] text-4xl; animation: floatUp 4s linear infinite; }
