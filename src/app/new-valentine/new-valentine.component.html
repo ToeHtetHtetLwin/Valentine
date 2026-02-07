@@ -1,74 +1,53 @@
-<p-toast></p-toast>
+<p-toast position="top-center" [baseZIndex]="99999"></p-toast>
 
-<div
-  class="h-screen w-full relative overflow-hidden flex flex-col items-center justify-center
-         bg-[url('https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/19699486/GettyImages_1092626790.jpg?quality=90&strip=all&crop=0,10.752726382539,100,78.494547234923')]
-         bg-cover bg-center"
->
-  <!-- Overlay -->
+<div class="h-screen w-full relative overflow-hidden flex flex-col items-center justify-center
+            bg-[url('https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/19699486/GettyImages_1092626790.jpg?quality=90&strip=all&crop=0,10.752726382539,100,78.494547234923')]
+            bg-cover bg-center">
+  
   <div class="absolute inset-0 bg-black/35 backdrop-blur-[1px]"></div>
 
-  <!-- Floating Hearts -->
   <div class="absolute inset-0 pointer-events-none">
-    <div
-      *ngFor="let h of hearts()"
-      [style.left]="h.left"
-      [style.animationDuration]="h.duration"
-      [style.fontSize]="h.size"
-      class="absolute bottom-[-50px] text-red-500 animate-float-up opacity-0"
-    >
+    <div *ngFor="let h of hearts()"
+         [style.left]="h.left"
+         [style.animationDuration]="h.duration"
+         [style.fontSize]="h.size"
+         class="absolute bottom-[-50px] text-red-500 animate-float-up opacity-0">
       ❤️
     </div>
   </div>
 
-  <!-- Card -->
-  <div
-    class="z-10 bg-white/25 backdrop-blur-xl border border-white/30
-           px-10 py-10 rounded-[2.5rem] shadow-2xl text-center max-w-sm mx-4"
-  >
-    <!-- Couple Names -->
+  <div class="z-10 bg-white/25 backdrop-blur-xl border border-white/30
+              px-10 py-10 rounded-[2.5rem] shadow-2xl text-center max-w-sm mx-4">
+    
     <h2 class="text-[#fdf6f0] text-xl mb-2 font-semibold">
       {{ boyName }} ❤️ {{ girlName }}
     </h2>
 
-    <!-- Title -->
-    <h1 class="text-[#fdf6f0] text-5xl font-serif mb-3 italic">
-      SoulSync
-    </h1>
-
+    <h1 class="text-[#fdf6f0] text-5xl font-serif mb-3 italic">SoulSync</h1>
     <div class="h-[2px] w-20 bg-red-400 mx-auto mb-5 rounded-full"></div>
 
-    <!-- Subtitle -->
     <p class="text-[#f3e8e2] text-xl mb-6 font-light">
-      Connected by every
-      <span class="text-red-500 font-semibold">heartbeat</span>
+      Connected by every <span class="text-red-500 font-semibold">heartbeat</span>
     </p>
 
-    <div class="text-center text-red-500 text-xl p-2">
+    <div class="text-center text-red-500 text-xl p-2 font-medium">
       ချစ်သူဆီအသည်းလေးပို့မယ်
     </div>
 
-    <!-- Heart Counter -->
     <p class="text-white/80 mb-4 text-xl tracking-wide">
-      Total Love Sent:
-      <span class="font-bold text-red-500">{{ heartCount() }}</span> ❤️
+      Total Love Sent: <span class="font-bold text-red-500">{{ heartCount() }}</span> ❤️
     </p>
 
-    <!-- Love Sent Animation -->
-    <div *ngIf="lovePop()" class="love-pop">
+    <div *ngIf="lovePop()" class="text-white font-bold animate-bounce mb-2">
       Love Sent 💌
     </div>
 
-    <!-- Heart Button -->
-    <button
-      (click)="sendHeart()"
-      class="relative bg-white/20 hover:bg-white/30 border border-white/50
-             p-8 rounded-full transition-all active:scale-90 shadow-xl"
-    >
+    <button (click)="sendHeart()"
+            class="relative bg-white/20 hover:bg-white/30 border border-white/50
+                   p-8 rounded-full transition-all active:scale-90 shadow-xl">
       <span class="text-7xl block">❤️</span>
     </button>
 
-    <!-- Bottom -->
     <p class="text-[#f8ede8]/70 mt-6 text-[11px] tracking-[0.35em] uppercase">
       Tap to Sync Love
     </p>
