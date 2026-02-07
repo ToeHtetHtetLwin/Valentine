@@ -62,11 +62,7 @@ export class NewValentineComponent {
     const heartbeatRef = ref(this.db, 'heartbeat');
 
     // Start music on first click
-    if (!this.musicStarted) {
-      this.audio.loop = true;
-      this.audio.play().catch(() => console.log("Music play blocked by browser. Need user interaction."));
-      this.musicStarted = true;
-    }
+   
 
     // 🔥 အမြဲတမ်းတန်ဖိုးအသစ်ဖြစ်နေအောင် Timestamp (Date.now()) ကို ပို့လိုက်မယ်
     set(heartbeatRef, Date.now())

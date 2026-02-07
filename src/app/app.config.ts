@@ -19,17 +19,22 @@ const firebaseConfig = {
   appId: "1:303000818813:web:ab30f1d0be205bd5578d14"
 };
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),
-    provideAnimationsAsync(),
-  providePrimeNG({
-        theme: {
-            preset: Aura,
-            options: {
-          darkModeSelector: '.my-app-dark' // Dark mode အတွက် သတ်မှတ်ချက်
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideClientHydration(withEventReplay()),
+    provideAnimationsAsync(), // Animations အတွက် ဒါပါဖို့ လိုပါတယ်။ (သင်ထည့်ထားပြီးသားပါ)
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.my-app-dark'
         }
-        }
+      }
     }),
-    provideHttpClient(),provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideDatabase(() => getDatabase())
+    provideHttpClient(),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideDatabase(() => getDatabase()),
+   
   ]
 };
