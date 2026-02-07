@@ -1,0 +1,44 @@
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation-name: floatUp;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.love-pop {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff758f; /* deeper romantic pink */
+  text-shadow: 0 0 15px rgba(255, 120, 150, 0.6);
+  animation: popFade 1.2s ease;
+}
+
+
+@keyframes popFade {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

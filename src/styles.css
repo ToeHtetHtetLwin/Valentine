@@ -5,3 +5,21 @@
 
 /* Standard PrimeIcons */
 @import "primeicons/primeicons.css";
+
+body {
+  /* Use a relative path from styles.css to the assets folder */
+ 
+
+  /* Ensure the background covers the whole screen */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps image from scrolling */
+  
+  /* Fallback color in case image fails to load */
+  background-color: #f0f2f5; 
+  
+  /* Ensure the body takes up the full height of the viewport */
+  min-height: 100vh;
+  margin: 0;
+}
