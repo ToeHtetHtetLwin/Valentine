@@ -68,10 +68,10 @@ export class NewValentineComponent {
     // ၁။ Toast Notification ပြမယ်
     this.messageService.clear();
     this.messageService.add({
-      severity: 'error', 
+      severity: 'success', 
       summary: 'Love Received!',
-      detail: 'ချစ်သူဆီက အသည်းလေး ရောက်လာပါပြီ ❤️',
-      life: 1500,
+      detail: 'ချစ်သူဆီက အသည်းလေး ရောက်လာပါပြီ ❤️ကိုယ် မင်းကိုလွမ်းတယ်🥹',
+      life: 2000,
     });
 
     // ၂။ Counter တိုးမယ်
